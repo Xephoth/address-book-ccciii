@@ -3,20 +3,12 @@ package com.example.addressbook.model;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * ContactManager class manages a collection of Contact object
- */
 public class ContactManager {
     private IContactDAO contactDAO;
     public ContactManager(IContactDAO contactDAO) {
         this.contactDAO = contactDAO;
     }
 
-    /**
-     * Method to retrieve a list of contact objects
-     * @param query - The identifier to select contacts
-     * @return List of contact objects matching the query
-     */
     public List<Contact> searchContacts(String query) {
         return contactDAO.getAllContacts()
                 .stream()
@@ -33,10 +25,6 @@ public class ContactManager {
         return searchString.toLowerCase().contains(query);
     }
 
-    /**
-     * Adds a contact to the database
-     * @param contact
-     */
     public void addContact(Contact contact) {
         contactDAO.addContact(contact);
     }
